@@ -33,4 +33,9 @@ public class Computer {
     // создаем свойства, где хранятся истансы
     Processor i7 = new Processor();
     Memory ddr4 = new Memory();
+
+    // rest оператор в java, для переменного количества аргументов
+    public void printInts(int ... ints) {
+        for (int i : ints) System.out.println(i);
+    }
 }

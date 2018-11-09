@@ -25,7 +25,7 @@ public class Main {
 
         логические значения
         boolean
-        */
+         */
 
         // преобразование типов
         byte b = 10;
@@ -36,7 +36,7 @@ public class Main {
         // чтение из cli
         Scanner scanner = new Scanner(System.in);
         int result = scanner.nextInt();
-        */
+         */
 
         /*
         if (result == 0) {
@@ -44,7 +44,7 @@ public class Main {
         } else {
             System.out.println(result);
         }
-        */
+         */
 
         /*
         switch (result) {
@@ -54,7 +54,7 @@ public class Main {
             default:
                 System.out.println(result);
         }
-        */
+         */
 
         int month = 12;
         int salary = 2000;
@@ -69,7 +69,8 @@ public class Main {
         while () {}
         do {} while ();
         for () {}
-        */
+        for-each - for (type instance : instances) {}
+         */
 
         // инициализация массива
         int[] nums1 = new int[] {1, 2, 3};
@@ -84,6 +85,9 @@ public class Main {
         }
 
         System.out.println(Arrays.toString(nums1));
+
+        // for-each style используется для перебора неупорядоченного массива
+        for (int n : nums2) System.out.println(n + 1);
 
         // многомерные массивы
         int[][] matrix = {{1,2,3}, {4,5,6}, {7,8,9}};
@@ -103,15 +107,33 @@ public class Main {
         Computer comp = new Computer();
         comp.i7.start();
         comp.ddr4.add();
-        */
+        comp.printInts(123, 456, 789);
+         */
 
         // создание анонимных классов, как способ инкапсуляции свойств-инстансов
         new Computer() {
             public void start() {
                 this.i7.start();
                 this.ddr4.add();
+                this.printInts(123, 456, 789);
             }
         }.start();
+
+        // java 8 - создание инстанса от интерфейса (под капотом создается класс)
+        IPerson iPerson = new IPerson() {
+            @Override
+            public String getFirstName() {
+                return "Vasya";
+            }
+
+            @Override
+            public String getLastName() {
+                return "Pupkin";
+            }
+        };
+        System.out.println(iPerson.getFirstName());
+        System.out.println(iPerson.getLastName());
+        System.out.println(iPerson.getFullName());
 
         // истанс от класса наследованного от абстрактного
         ShapeCircle circle = new ShapeCircle();
@@ -126,7 +148,7 @@ public class Main {
         для свойств - невозможность ре-инициализации (создает константу)
         для методов - невозможность переопределить
         для классов - невозможность наследования
-        */
+         */
 
         // в java массивы статической длинны,
         // если нужен расширяющися массив - используем ArrayList
@@ -148,7 +170,8 @@ public class Main {
         // обработка исключений
         try {
             int n = 100 / 0;
-        } catch (ArithmeticException error) {
+            // так ставятся множественные обработчики
+        } catch (ArithmeticException | NullPointerException error) {
             System.out.println(error);
         } catch (Exception error) {
             // можно добавлять множественные типы и общую ошибку Exception
