@@ -1,5 +1,6 @@
 package patterns;
 
+import patterns.decorator.*;
 import patterns.observer.ConditionsDisplayCustom;
 import patterns.observer.ConditionsDisplayNative;
 import patterns.observer.WeatherObservableCustom;
@@ -44,5 +45,18 @@ public class Main {
         displayNative.update(observableNative, observableNative);
 
         System.out.println("\n--- decorator ---\n");
+
+        // оборачиваем объект декораторами
+        IBeverage beverage1 =
+                new DecoratorWhip(
+                        new DecoratorMocha(
+                                new BeverageEspresso()));
+        beverage1.print();
+
+        // указываем количество порций
+        IBeverage beverage2 = new DecoratorMocha(new BeverageHouseBlend(), 2);
+        beverage2.print();
+
+        System.out.println("\n--- factory ---\n");
     }
 }
