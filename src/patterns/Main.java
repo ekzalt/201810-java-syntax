@@ -1,6 +1,7 @@
 package patterns;
 
 import patterns.decorator.*;
+import patterns.factory.*;
 import patterns.observer.ConditionsDisplayCustom;
 import patterns.observer.ConditionsDisplayNative;
 import patterns.observer.WeatherObservableCustom;
@@ -58,5 +59,18 @@ public class Main {
         beverage2.print();
 
         System.out.println("\n--- factory ---\n");
+
+        IPizzaStore store1 = new PizzaStore();
+        IPizzaStore store2 = new PizzaStore(new PizzaFactoryNY());
+        IPizzaStore store3 = new PizzaStore();
+        store3.setFactory(new PizzaFactoryChicago());
+
+        IPizza pizza1 = store1.order("cheese");
+        IPizza pizza2 = store2.order("cheese");
+        IPizza pizza3 = store3.order("cheese");
+
+        System.out.println(pizza1.getType());
+        System.out.println(pizza2.getType());
+        System.out.println(pizza3.getType());
     }
 }
