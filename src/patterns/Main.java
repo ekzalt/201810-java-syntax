@@ -6,6 +6,9 @@ import patterns.observer.ConditionsDisplayCustom;
 import patterns.observer.ConditionsDisplayNative;
 import patterns.observer.WeatherObservableCustom;
 import patterns.observer.WeatherObservableNative;
+import patterns.singleton.SingleSync;
+import patterns.singleton.SingleTemplate;
+import patterns.singleton.SingleVolatile;
 import patterns.strategy.DuckBase;
 import patterns.strategy.DuckMallard;
 import patterns.strategy.FlyNoWay;
@@ -72,5 +75,15 @@ public class Main {
         System.out.println(pizza1.getType());
         System.out.println(pizza2.getType());
         System.out.println(pizza3.getType());
+
+        System.out.println("\n--- singleton ---\n");
+
+        SingleSync singleton1 = SingleSync.getInstance();
+        SingleTemplate singleton2 = SingleTemplate.getInstance();
+        SingleVolatile singleton3 = SingleVolatile.getInstance();
+
+        singleton1.getType();
+        singleton2.getType();
+        singleton3.getType();
     }
 }
