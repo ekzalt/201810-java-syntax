@@ -1,5 +1,6 @@
 package patterns;
 
+import patterns.command.*;
 import patterns.decorator.*;
 import patterns.factory.*;
 import patterns.observer.ConditionsDisplayCustom;
@@ -85,5 +86,62 @@ public class Main {
         singleton1.getType();
         singleton2.getType();
         singleton3.getType();
+
+        System.out.println("\n--- command ---\n");
+
+        Panel panel = new Panel(7);
+        Light lightBedroom = new Light("bedroom");
+        Door doorGarage = new Door("garage");
+        Audio audio = new Audio();
+        Fan kitchenFan = new Fan("kitchen");
+
+        panel.setCommand(
+                0,
+                new CommandLightOn(lightBedroom),
+                new CommandLightOff(lightBedroom));
+        panel.setCommand(
+                1,
+                new CommandDoorOpen(doorGarage),
+                new CommandDoorClose(doorGarage));
+        panel.setCommand(
+                2,
+                new CommandAudioStartPlay(audio),
+                new CommandAudioStopPlay(audio));
+        panel.setCommand(
+                3,
+                new CommandFanLow(kitchenFan),
+                new CommandFanOff(kitchenFan));
+
+        panel.pressOn(0);
+        panel.pressOn(1);
+        panel.pressOn(2);
+        panel.pressOn(3);
+        panel.pressOff(0);
+        panel.pressOff(1);
+        panel.pressOff(2);
+        panel.pressOff(3);
+
+        // party time :)
+
+        Light lightLivingRoom = new Light("living room");
+        Fan fanLivingRoom = new Fan("living room");
+        ICommand[] partyOnCommands = {
+                new CommandLightOn(lightLivingRoom),
+                new CommandFanLow(fanLivingRoom),
+                new CommandAudioStartPlay(audio)
+        };
+        ICommand[] partyOffCommands = {
+                new CommandLightOff(lightLivingRoom),
+                new CommandFanOff(fanLivingRoom),
+                new CommandAudioStopPlay(audio)
+        };
+        panel.setCommand(
+                4,
+                new CommandMacro(partyOnCommands),
+                new CommandMacro(partyOffCommands));
+        panel.pressOn(4); // start party
+        panel.pressOff(4); // stop party
+
+        System.out.println(panel);
     }
 }

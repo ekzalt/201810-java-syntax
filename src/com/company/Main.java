@@ -1,9 +1,14 @@
 package com.company;
 
 import java.lang.String;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -186,7 +191,35 @@ public class Main {
         fileWorker.writeFile();
         fileWorker.readFile();
 
-        // работа с потоками
+        // работа со стримами (Stream)
+
+        // считываем строки с консоли
+        Scanner scanner = new Scanner(System.in);
+        // функциональный подход с генератором - не потребляет память
+        Stream<String> stringStream = Stream.generate(() -> scanner.nextLine());
+        // модификация данных
+        stringStream
+                .filter(str -> str.length() > 3)
+                .map(str -> str.toUpperCase())
+                .limit(2)
+                .forEach(str -> System.out.println(str));
+
+        // или
+        IntStream integerStream = IntStream.iterate(1, i -> i + 1);
+        integerStream
+                .filter(i -> i % 2 == 0)
+                .limit(10)
+                .forEach(System.out::println);
+
+        // массивы и стримы
+        List<String> stringList = Arrays
+                .asList("abc", "def", "ghi")
+                .stream()
+                .map(str -> str.toUpperCase())
+                .collect(Collectors.toList());
+        System.out.println(stringList);
+
+        // работа с потоками (Thread)
 
         // 1. наследование
         Thread thread1 = new ThreadWorker();
@@ -196,12 +229,18 @@ public class Main {
         Thread thread3 = new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < 10; i++) System.out.println("Thread anon " + i);
+                for (int i = 0; i < 5; i++) System.out.println("Thread anon " + i);
             }
+        });
+        // 4. лямда-выражение
+        List<Integer> integerList = Arrays.asList(1, 2, 3, 4);
+        Thread thread4 = new Thread(() -> {
+            for (int i : integerList) System.out.println("Thread lambda " + i);
         });
         // вызываем start - это создаст поток и вызовет run
         thread1.start();
         thread2.start();
         thread3.start();
+        thread4.start();
     }
 }
