@@ -1,7 +1,13 @@
 package patterns;
 
+import patterns.adapter.AdapterTurkey;
+import patterns.adapter.Turkey;
 import patterns.command.*;
 import patterns.decorator.*;
+import patterns.facade.FacadeHomeTheater;
+import patterns.facade.PopcornMachine;
+import patterns.facade.Screen;
+import patterns.facade.Video;
 import patterns.factory.*;
 import patterns.observer.ConditionsDisplayCustom;
 import patterns.observer.ConditionsDisplayNative;
@@ -143,5 +149,23 @@ public class Main {
         panel.pressOff(4); // stop party
 
         System.out.println(panel);
+
+        System.out.println("\n--- adapter ---\n");
+
+        AdapterTurkey adapter = new AdapterTurkey(new Turkey());
+        adapter.quack();
+        adapter.fly();
+
+        System.out.println("\n--- facade ---\n");
+
+        FacadeHomeTheater homeTheater = new FacadeHomeTheater(
+                new PopcornMachine(),
+                new Screen(),
+                new Light("living room"),
+                new Video(),
+                new Audio());
+
+        homeTheater.watchMovie("Avengers");
+        homeTheater.endMovie();
     }
 }

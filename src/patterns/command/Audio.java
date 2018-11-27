@@ -1,33 +1,28 @@
 package patterns.command;
 
-public class Audio implements ISwitchable {
-    private String disc = "";
-    private int volume = 0;
+public class Audio extends Player {
+    private double wave = 100.5;
 
-    public void putDisc(String disc) {
-        this.disc = disc;
+    public void setWave(double wave) {
+        this.wave = wave;
     }
 
+    public void startPlayRadio() {
+        System.out.println("Audio start play radio on wave " + wave + "FM on volume " + volume);
+    }
+
+    public void stopPlayRadio() {
+        System.out.println("Audio stop play radio on wave " + wave + "FM");
+    }
+
+    @Override
     public void startPlayDisc() {
         System.out.println("Audio start play " + disc + " on volume " + volume);
     }
 
+    @Override
     public void stopPlayDisc() {
         System.out.println("Audio stop play " + disc);
-    }
-
-    public String pullDisc() {
-        String extract = disc;
-        disc = "";
-        return extract;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
-
-    public int getVolume() {
-        return volume;
     }
 
     @Override
