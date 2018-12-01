@@ -20,6 +20,12 @@ import patterns.strategy.DuckBase;
 import patterns.strategy.DuckMallard;
 import patterns.strategy.FlyNoWay;
 import patterns.strategy.QuackSqueak;
+import patterns.template.Caffeine;
+import patterns.template.Coffee;
+import patterns.template.ComparableDuck;
+import patterns.template.Tea;
+
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -167,5 +173,27 @@ public class Main {
 
         homeTheater.watchMovie("Avengers");
         homeTheater.endMovie();
+
+        System.out.println("\n--- template ---\n");
+
+        String[] teaCondiments = {"sugar", "lemon"};
+        String[] coffeeCondiments = {"sugar", "milk"};
+
+        Caffeine tea = new Tea(teaCondiments);
+        Caffeine coffee = new Coffee(coffeeCondiments);
+
+        tea.prepareDrink();
+        coffee.prepareDrink();
+
+        ComparableDuck[] ducks = {
+                new ComparableDuck("Daffy", 8),
+                new ComparableDuck("Howard", 2),
+                new ComparableDuck("Louie", 6),
+                new ComparableDuck("Sidney", 4)
+        };
+
+        Arrays.sort(ducks);
+
+        for (ComparableDuck duck : ducks) System.out.println(duck);
     }
 }
