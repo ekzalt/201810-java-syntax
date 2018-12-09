@@ -9,6 +9,7 @@ import patterns.facade.PopcornMachine;
 import patterns.facade.Screen;
 import patterns.facade.Video;
 import patterns.factory.*;
+import patterns.iterator.*;
 import patterns.observer.ConditionsDisplayCustom;
 import patterns.observer.ConditionsDisplayNative;
 import patterns.observer.WeatherObservableCustom;
@@ -195,5 +196,16 @@ public class Main {
         Arrays.sort(ducks);
 
         for (ComparableDuck duck : ducks) System.out.println(duck);
+
+        System.out.println("\n--- iterator ---\n");
+
+        IStore[] stores = {
+                new StoreDiner(),
+                new StorePancake(),
+                new StoreCafe()
+        };
+        Waitress waitress = new Waitress(stores);
+
+        waitress.printAll();
     }
 }
