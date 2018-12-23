@@ -3,6 +3,9 @@ package patterns;
 import patterns.adapter.AdapterTurkey;
 import patterns.adapter.Turkey;
 import patterns.command.*;
+import patterns.composer.ComponentItem;
+import patterns.composer.ComponentNode;
+import patterns.composer.ComponentWaitress;
 import patterns.decorator.*;
 import patterns.facade.FacadeHomeTheater;
 import patterns.facade.PopcornMachine;
@@ -207,5 +210,88 @@ public class Main {
         Waitress waitress = new Waitress(stores);
 
         waitress.printAll();
+
+        System.out.println("\n--- composer ---\n");
+
+        ComponentNode storePancake = new ComponentNode("Pancake Menu", "breakfast");
+        ComponentNode storeDiner = new ComponentNode("Diner Menu", "lunch");
+        ComponentNode storeCafe = new ComponentNode("Cafe Menu", "dinner");
+        ComponentNode storeDessert = new ComponentNode("Dessert Menu", "dessert");
+        ComponentNode storesAll = new ComponentNode("All Menus", "all combined menus");
+
+        storesAll.add(storePancake);
+        storesAll.add(storeDiner);
+        storesAll.add(storeCafe);
+        storesAll.add(storeDessert);
+
+        storePancake.add(new ComponentItem(
+                "K&B Pancake Breakfast",
+                "Pancakes with scrambled eggs, toast",
+                true,
+                300));
+        storePancake.add(new ComponentItem(
+                "Regular Pancake Breakfast",
+                "Pancakes with fried eggs, sausage",
+                false,
+                300));
+        storePancake.add(new ComponentItem(
+                "Blueberry Pancakes",
+                "Pancakes with fresh blueberries",
+                true,
+                350));
+        storePancake.add(new ComponentItem(
+                "Waffles",
+                "Waffles with your choice blueberries or strawberries",
+                true,
+                360));
+
+        storeDiner.add(new ComponentItem(
+                "Vegetarian BLT",
+                "Sauce with lettuce and tomato on whole wheat",
+                true,
+                300));
+        storeDiner.add(new ComponentItem(
+                "Vegetarian",
+                "Bacon with lettuce and tomato on whole wheat",
+                false,
+                300));
+        storeDiner.add(new ComponentItem(
+                "Soup",
+                "Soup with a side of potato salad",
+                false,
+                330));
+        storeDiner.add(new ComponentItem(
+                "Hot dog",
+                "Hot dog with relish, onions, topped with cheese",
+                false,
+                310));
+
+        storeCafe.add(new ComponentItem(
+                "Veggie Burger",
+                "Vegetarian burger on whole wheat bun, lettuce, tomato and fries",
+                true,
+                400));
+        storeCafe.add(new ComponentItem(
+                "Soup",
+                "A cup of soup with a side of salad",
+                false,
+                370));
+        storeCafe.add(new ComponentItem(
+                "Burrito",
+                "A large burrito with whole pinto beans, salsa, guacamole",
+                true,
+                430));
+
+        storeDessert.add(new ComponentItem(
+                "Apple Pie",
+                "Apple pie with a flakey crust, topped with vanilla icecream",
+                true,
+                160));
+
+        ComponentWaitress componentWaitress = new ComponentWaitress(storesAll);
+
+        componentWaitress.printAll();
+        // componentWaitress.printVegetarian();
+        // componentWaitress.printNotVegetarian();
     }
 }
