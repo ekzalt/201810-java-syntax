@@ -20,6 +20,7 @@ import patterns.observer.WeatherObservableNative;
 import patterns.singleton.SingleSync;
 import patterns.singleton.SingleTemplate;
 import patterns.singleton.SingleVolatile;
+import patterns.state.GumballMachine;
 import patterns.strategy.DuckBase;
 import patterns.strategy.DuckMallard;
 import patterns.strategy.FlyNoWay;
@@ -293,5 +294,16 @@ public class Main {
         componentWaitress.printAll();
         // componentWaitress.printVegetarian();
         // componentWaitress.printNotVegetarian();
+
+        System.out.println("\n--- state ---\n");
+
+        GumballMachine machine = new GumballMachine(2);
+
+        machine.insertCoin();
+        machine.turnCrank();
+        machine.insertCoin();
+        machine.turnCrank();
+        machine.insertCoin();
+        machine.turnCrank();
     }
 }
