@@ -1,6 +1,12 @@
 package patterns.state;
 
 public abstract class State implements IState {
+    protected transient GumballMachine machine;
+
+    public State(GumballMachine machine) {
+        this.machine = machine;
+    }
+
     @Override
     public void insertCoin() throws UnsupportedOperationException {
         throw new UnsupportedOperationException();

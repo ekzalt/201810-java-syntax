@@ -1,10 +1,8 @@
 package patterns.state;
 
 public class StateNoCoin extends State {
-    private GumballMachine machine;
-
     public StateNoCoin(GumballMachine machine) {
-        this.machine = machine;
+        super(machine);
     }
 
     @Override

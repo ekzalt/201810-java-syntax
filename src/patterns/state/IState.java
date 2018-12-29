@@ -1,6 +1,9 @@
 package patterns.state;
 
-public interface IState {
+// needs for rmi
+import java.io.Serializable;
+
+public interface IState extends Serializable {
     void insertCoin();
     void ejectCoin();
     void turnCrank();

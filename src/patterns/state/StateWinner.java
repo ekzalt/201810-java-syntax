@@ -4,7 +4,7 @@ public class StateWinner extends State {
     private GumballMachine machine;
 
     public StateWinner(GumballMachine machine) {
-        this.machine = machine;
+        super(machine);
     }
 
     @Override

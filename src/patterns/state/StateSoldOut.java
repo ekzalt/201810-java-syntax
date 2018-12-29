@@ -1,10 +1,8 @@
 package patterns.state;
 
 public class StateSoldOut extends State {
-    private GumballMachine machine;
-
     public StateSoldOut(GumballMachine machine) {
-        this.machine = machine;
+        super(machine);
     }
 
     @Override

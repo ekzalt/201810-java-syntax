@@ -1,6 +1,9 @@
 package patterns.state;
 
-public class GumballMachine implements IState {
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class GumballMachine extends UnicastRemoteObject implements IState, IRemote {
     private IState stateNoCoin;
     private IState stateHasCoin;
     private IState stateSold;
@@ -8,15 +11,23 @@ public class GumballMachine implements IState {
     private IState stateWinner;
     private IState state;
 
+    private String location = "default";
     private int countBalls = 0;
     private int countCoins = 0;
 
-    public GumballMachine() {
+    public GumballMachine() throws RemoteException {
         initStates();
         fill(0);
     }
 
-    public GumballMachine(int count) {
+    public GumballMachine(int count) throws RemoteException {
+        initStates();
+        fill(count);
+    }
+
+    public GumballMachine(int count, String location) throws RemoteException {
+        this.location = location;
+
         initStates();
         fill(count);
     }
@@ -66,6 +77,16 @@ public class GumballMachine implements IState {
 
     public void setState(IState state) {
         this.state = state;
+    }
+
+    @Override
+    public IState getState() {
+        return state;
+    }
+
+    @Override
+    public String getLocation() throws RemoteException {
+        return location;
     }
 
     @Override

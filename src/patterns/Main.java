@@ -17,6 +17,8 @@ import patterns.observer.ConditionsDisplayCustom;
 import patterns.observer.ConditionsDisplayNative;
 import patterns.observer.WeatherObservableCustom;
 import patterns.observer.WeatherObservableNative;
+import patterns.proxy.DatingService;
+import patterns.proxy.MonitorGumballMachine;
 import patterns.singleton.SingleSync;
 import patterns.singleton.SingleTemplate;
 import patterns.singleton.SingleVolatile;
@@ -30,6 +32,9 @@ import patterns.template.Coffee;
 import patterns.template.ComparableDuck;
 import patterns.template.Tea;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.RemoteException;
 import java.util.Arrays;
 
 public class Main {
@@ -297,13 +302,31 @@ public class Main {
 
         System.out.println("\n--- state ---\n");
 
-        GumballMachine machine = new GumballMachine(2);
+        GumballMachine machine = null;
+
+        try {
+            machine = new GumballMachine(2, "rmi://127.0.0.1/gm0");
+
+            /*
+            // register instance into remote rmi
+            Naming.rebind("//127.0.0.1/gm0", machine);
+
+            // getting instance from remote rmi
+            GumballMachine gm0 = (GumballMachine) Naming.lookup("rmi://127.0.0.1/gm0");
+            */
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         machine.insertCoin();
         machine.turnCrank();
-        machine.insertCoin();
-        machine.turnCrank();
-        machine.insertCoin();
-        machine.turnCrank();
+
+        System.out.println("\n--- proxy ---\n"); // the example needs rmiregistry
+
+        MonitorGumballMachine monitor = new MonitorGumballMachine(machine);
+        monitor.report();
+
+        DatingService datingService = new DatingService();
+        datingService.run();
     }
 }

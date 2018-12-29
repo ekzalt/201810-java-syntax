@@ -3,11 +3,10 @@ package patterns.state;
 import java.util.Random;
 
 public class StateHasCoin extends State {
-    private GumballMachine machine;
     private Random random = new Random(System.currentTimeMillis());
 
     public StateHasCoin(GumballMachine machine) {
-        this.machine = machine;
+        super(machine);
     }
 
     @Override
