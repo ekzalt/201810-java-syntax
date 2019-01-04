@@ -1,4 +1,4 @@
-package com.company;
+package starter;
 
 // вложенные классы
 public class Computer {

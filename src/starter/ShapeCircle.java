@@ -1,4 +1,4 @@
-package com.company;
+package starter;
 
 // наследуем абстракный класс
 public class ShapeCircle extends ShapeBase {

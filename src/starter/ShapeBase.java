@@ -1,4 +1,4 @@
-package com.company;
+package starter;
 
 // абстрактные классы
 abstract public class ShapeBase {

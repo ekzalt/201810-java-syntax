@@ -1,4 +1,4 @@
-package com.company;
+package starter;
 
 // в интерфейсе все поля static, все методы public
 public interface IPerson {

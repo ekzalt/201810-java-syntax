@@ -1,4 +1,4 @@
-package com.company;
+package starter;
 
 // потоки в java через наследование
 public class ThreadWorker extends Thread {

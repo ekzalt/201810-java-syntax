@@ -1,4 +1,4 @@
-package com.company;
+package starter;
 
 // потоки в java через интерфейс
 public class ThreadRunner implements Runnable {

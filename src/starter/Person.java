@@ -1,4 +1,4 @@
-package com.company;
+package starter;
 
 public class Person implements IPerson {
     private int id;

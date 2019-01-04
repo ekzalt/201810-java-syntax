@@ -1,6 +1,22 @@
 # Learn Java 8 SE
 
-[SceneBuilder](https://gluonhq.com/products/scene-builder/)
+## Programs
+
+- [SceneBuilder](https://gluonhq.com/products/scene-builder/)
+
+## Maven packages
+
+[Maven](http://maven.apache.org/)
+
+[Maven search](https://search.maven.org/)
+
+- [jackson-databind](https://github.com/FasterXML/jackson-databind) JSON parser/generator
+
+## Web development (java back-end)
+
+- [Netty](https://netty.io/) is an asynchronous event-driven network application framework
+- [Undertow](http://undertow.io/) is a flexible performant web server written in java
+- [FreeMarker](https://freemarker.apache.org/) is a template engine
 
 ## Design Patterns
 

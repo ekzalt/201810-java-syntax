@@ -1,4 +1,4 @@
-package com.company;
+package starter;
 
 public class Employee {
     // объявление свойств

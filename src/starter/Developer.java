@@ -1,4 +1,4 @@
-package com.company;
+package starter;
 
 // наследуемся
 public class Developer extends Person {

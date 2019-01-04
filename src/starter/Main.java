@@ -1,7 +1,6 @@
-package com.company;
+package starter;
 
 import java.lang.String;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -242,5 +241,7 @@ public class Main {
         thread2.start();
         thread3.start();
         thread4.start();
+
+        // TCP сокеты
     }
 }
