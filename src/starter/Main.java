@@ -1,5 +1,8 @@
 package starter;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 import java.lang.String;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -93,6 +96,15 @@ public class Main {
         // for-each style используется для перебора неупорядоченного массива
         for (int n : nums2) System.out.println(n + 1);
 
+        // итерация через стримы
+
+        // передаем кастомную функцию
+        IntStream.range(1, 3)
+                .forEach(num -> System.out.println(num));
+        // передаем метод
+        IntStream.range(4, 6)
+                .forEach(System.out::println);
+
         // многомерные массивы
         int[][] matrix = {{1,2,3}, {4,5,6}, {7,8,9}};
         System.out.println(matrix[1][1]);
@@ -125,11 +137,15 @@ public class Main {
 
         // java 8 - создание инстанса от интерфейса (под капотом создается класс)
         IPerson iPerson = new IPerson() {
+            @NotNull
+            @Contract(pure = true)
             @Override
             public String getFirstName() {
                 return "Vasya";
             }
 
+            @NotNull
+            @Contract(pure = true)
             @Override
             public String getLastName() {
                 return "Pupkin";

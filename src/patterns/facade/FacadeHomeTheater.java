@@ -1,8 +1,11 @@
 package patterns.facade;
 
+import jdk.jshell.spi.ExecutionControl;
 import patterns.command.Audio;
 import patterns.command.Light;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+// migrate to java 11
+// import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class FacadeHomeTheater {
     private PopcornMachine popcorn;
@@ -55,19 +58,19 @@ public class FacadeHomeTheater {
 
     // имплементация других фасадных методов
 
-    public void playMusic(String music) {
-        throw new NotImplementedException();
+    public void playMusic(String music) throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("No such method");
     }
 
-    public void endMusic() {
-        throw new NotImplementedException();
+    public void endMusic() throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("No such method");
     }
 
-    public void listenRadio(double wave) {
-        throw new NotImplementedException();
+    public void listenRadio(double wave) throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("No such method");
     }
 
-    public void endRadio() {
-        throw new NotImplementedException();
+    public void endRadio() throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("No such method");
     }
 }

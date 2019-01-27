@@ -1,22 +1,48 @@
-# Learn Java 8 SE
+# Learn Java SE
+
+```bash
+
+# jar java runner
+java
+
+# java compiler
+javac
+
+# show all java proceses
+jcmd
+
+# get report by prosess id to file
+jstack <pid> <report.info>
+
+```
 
 ## Programs
 
 - [SceneBuilder](https://gluonhq.com/products/scene-builder/)
 
-## Maven packages
+## Maven
 
 [Maven](http://maven.apache.org/)
+
+### Maven packages
 
 [Maven search](https://search.maven.org/)
 
 - [jackson-databind](https://github.com/FasterXML/jackson-databind) JSON parser/generator
+
+## Gradle
+
+[Gradle](https://gradle.org/)
 
 ## Web development (java back-end)
 
 - [Netty](https://netty.io/) is an asynchronous event-driven network application framework
 - [Undertow](http://undertow.io/) is a flexible performant web server written in java
 - [FreeMarker](https://freemarker.apache.org/) is a template engine
+- [OkHttp](http://square.github.io/okhttp/) HTTP & HTTP/2 client for Android and Java applications
+- [Spring](http://spring.io/) Spring projects
+- [Hibernate](http://hibernate.org/) Java ORM/ODM
+- [JDK Documentation](https://docs.oracle.com/en/java/javase/11/) Oracle Java Documentation
 
 ## Design Patterns
 
