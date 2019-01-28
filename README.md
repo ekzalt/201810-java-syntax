@@ -99,13 +99,13 @@ Command Pattern `./src/patterns/command`
 
 ### Adapter
 
-Command Pattern `./src/patterns/adapter`
+Adapter Pattern `./src/patterns/adapter`
 
 *Адаптер* преобразует один интерфейс класса к другому интерфейсу, на который расчитывает клиент. Адаптер обеспечивает совместную работу классов, невозможную в обычных условиях из-за несовместимости интерфейсов.
 
 ### Facade
 
-Command Pattern `./src/patterns/facade`
+Facade Pattern `./src/patterns/facade`
 
 *Фасад* предоставляет унифицированный интерфейс к группе интерфейсов подсистемы. Фасад определяет высокоуровневый интерфейс, упрощающий работу с подсистемой.
 
