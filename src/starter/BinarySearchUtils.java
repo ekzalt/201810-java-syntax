@@ -1,7 +1,12 @@
 package starter;
 
-public class BinarySearch {
-    public static int binarySearch(int[] sortedArray, int key, int low, int high) {
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Arrays;
+
+public class BinarySearchUtils {
+    public static int binarySearchRecursive(int[] sortedArray, int key, int low, int high) {
         // считаем индекс центрального элемента
         int middle = low + (high - low) / 2;
 
@@ -17,10 +22,31 @@ public class BinarySearch {
         } else if (key < sortedArray[middle]) {
             // рекурсивный вызов для левого подмассива
             // не забывайте здесь ключевое слово return (подумайте, зачем оно нужно)
-            return binarySearch(sortedArray, key, low, middle - 1);
+            return binarySearchRecursive(sortedArray, key, low, middle - 1);
         } else {
             // рекурсивный вызов для правого помассива
-            return binarySearch(sortedArray, key, middle + 1, high);
+            return binarySearchRecursive(sortedArray, key, middle + 1, high);
         }
+    }
+
+    @Contract(pure = true)
+    public static int binarySearchCycle(@NotNull int[] array, int value) {
+        Arrays.sort(array);
+        int low = 0;
+        int high = array.length - 1;
+
+        while (low <= high) {
+            int middle = low + (high - low) / 2;
+
+            if (value < array[middle]) {
+                high = middle - 1;
+            } else if (value > array[middle]) {
+                low = middle + 1;
+            } else {
+                return middle;
+            }
+        }
+
+        return -1;
     }
 }
